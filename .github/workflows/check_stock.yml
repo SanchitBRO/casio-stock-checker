@@ -3,7 +3,7 @@ name: Casio Stock Checker
 on:
   schedule:
     - cron: '*/15 * * * *'
-  workflow_dispatch:       
+  workflow_dispatch:
 
 jobs:
   run_checker:
@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install requests beautifulsoup4
 
       - name: Run Stock Checker
         env:
