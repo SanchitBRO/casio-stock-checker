@@ -1,0 +1,1 @@
+# casio-stock-checker
