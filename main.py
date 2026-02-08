@@ -45,9 +45,8 @@ def check_stock():
                 f"Buy here: {URL}"
             )
         elif "sold out" in page_text:
-            send_telegram_message(
-                f"Still out of stock :("
             print("STATUS: Sold Out")
+            send_telegram_message(f" Still out of stock :( ")
         else:
             print("STATUS: Unknown (Keywords not found). The page structure might have changed.")
 
