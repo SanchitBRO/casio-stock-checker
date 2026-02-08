@@ -40,13 +40,12 @@ def check_stock():
             # We assume if "Add to cart" is readable in the text, it's good.
             print("STATUS: POTENTIALLY IN STOCK!")
             send_telegram_message(
-                f"🚨 STOCK ALERT! 🚨\n\n"
+                f"🚨SANCHIT - CASIO STOCK ALERT! 🚨\n\n"
                 f"Casio F-91WB-7A (White) is in Stock now !!\n\n"
                 f"Buy here: {URL}"
             )
         elif "sold out" in page_text:
             print("STATUS: Sold Out")
-            send_telegram_message(f" Still out of stock :( ")
         else:
             print("STATUS: Unknown (Keywords not found). The page structure might have changed.")
 
