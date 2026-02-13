@@ -7,6 +7,7 @@ on:
 
 jobs:
   run_checker:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
