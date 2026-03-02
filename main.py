@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-URL = "https://casiostore.bhawar.com/products/casio-f-91wb-7adf-white-digital-unisex-watch"
+URL = "https://www.hmtwatches.store/product/b8fbabdb-a49d-4e5d-92c6-71eda34c9382"
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 CHAT_ID = os.environ.get("CHAT_ID")
 
@@ -40,8 +40,8 @@ def check_stock():
             # We assume if "Add to cart" is readable in the text, it's good.
             print("STATUS: POTENTIALLY IN STOCK!")
             send_telegram_message(
-                f"🚨SANCHIT - CASIO STOCK ALERT! 🚨\n\n"
-                f"Casio F-91WB-7A (White) is in Stock now !!\n\n"
+                f"🚨SANCHIT - HMT STOCK ALERT! 🚨\n\n"
+                f"HMT Stellar DASS 04 in STOCK !!\n\n"
                 f"Buy here: {URL}"
             )
         elif "sold out" in page_text:
