@@ -44,7 +44,7 @@ def check_stock():
                 f"HMT Stellar DASS 04 in STOCK !!\n\n"
                 f"Buy here: {URL}"
             )
-        elif "sold out" in page_text:
+        elif "out of stock" in page_text:
             print("STATUS: Sold Out")
         else:
             print("STATUS: Unknown (Keywords not found). The page structure might have changed.")
