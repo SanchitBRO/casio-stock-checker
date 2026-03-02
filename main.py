@@ -35,13 +35,13 @@ def check_stock():
         soup = BeautifulSoup(response.content, 'html.parser')
         page_text = soup.get_text().lower()
         
-        if "out of stock" in page_text:
+        if "buy now" in page_text:
             # DOUBLE CHECK: Sometimes "Add to cart" is hidden but "Sold out" is visible.
             # We assume if "Add to cart" is readable in the text, it's good.
             print("STATUS: POTENTIALLY IN STOCK!")
             send_telegram_message(
-                f"🚨SANCHIT - HMT STOCK ALERT! 🚨\n\n"
-                f"HMT Stellar DASS 04 in STOCK !!\n\n"
+                f"🚨SANCHIT - HMT STOCK ALERT! 🚨\n"
+                f"HMT Stellar DASS 04 in STOCK !!\n"
                 f"Buy here: {URL}"
             )
         elif "out of stock" in page_text:
