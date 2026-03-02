@@ -35,7 +35,7 @@ def check_stock():
         soup = BeautifulSoup(response.content, 'html.parser')
         page_text = soup.get_text().lower()
         
-        if "aout of stock" in page_text:
+        if "out of stock" in page_text:
             # DOUBLE CHECK: Sometimes "Add to cart" is hidden but "Sold out" is visible.
             # We assume if "Add to cart" is readable in the text, it's good.
             print("STATUS: POTENTIALLY IN STOCK!")
