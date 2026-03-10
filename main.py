@@ -35,19 +35,21 @@ def check_stock():
         soup = BeautifulSoup(response.content, 'html.parser')
         page_text = soup.get_text().lower()
         
-        if "buy now" in page_text:
+        if "out of stock" in page_text:
+            print("STATUS: Sold Out")
             # DOUBLE CHECK: Sometimes "Add to cart" is hidden but "Sold out" is visible.
             # We assume if "Add to cart" is readable in the text, it's good.
+            
+        # elif "out of stock" in page_text:
+        #     print("STATUS: Sold Out")
+        else:
+            # print("STATUS: Unknown (Keywords not found). The page structure might have changed.")
             print("STATUS: POTENTIALLY IN STOCK!")
             send_telegram_message(
                 f"🚨SANCHIT - HMT STOCK ALERT! 🚨\n"
                 f"HMT Stellar DASS 04 in STOCK !!\n"
                 f"Buy here: {URL}"
             )
-        elif "out of stock" in page_text:
-            print("STATUS: Sold Out")
-        else:
-            print("STATUS: Unknown (Keywords not found). The page structure might have changed.")
 
     except Exception as e:
         print(f"An error occurred: {e}")
