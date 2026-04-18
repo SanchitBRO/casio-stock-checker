@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-URL = "https://www.hmtwatches.store/product/b8fbabdb-a49d-4e5d-92c6-71eda34c9382"
+URL = "https://justintime.in/collections/tiffany-casio/products/casio-enticer-men-quartz-turquoise-dial-analog-stainless-steel-watch-a2225?variant=49453593100563"
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 CHAT_ID = os.environ.get("CHAT_ID")
 
@@ -35,21 +35,21 @@ def check_stock():
         soup = BeautifulSoup(response.content, 'html.parser')
         page_text = soup.get_text().lower()
         
-        if "out of stock" in page_text:
-            print("STATUS: Sold Out")
+        if "ADD TO CART" in page_text:
+            print("STATUS: POTENTIALLY IN STOCK!")
+            send_telegram_message(
+                f"🚨SANCHIT - STOCK ALERT! 🚨\n"
+                f"CASIO TIFFANY in STOCK !!\n"
+                f"Buy here: {URL}"
+            )
             # DOUBLE CHECK: Sometimes "Add to cart" is hidden but "Sold out" is visible.
             # We assume if "Add to cart" is readable in the text, it's good.
             
-        # elif "out of stock" in page_text:
-        #     print("STATUS: Sold Out")
+        elif "SOLD OUT" in page_text:
+            print("STATUS: Sold Out")
         else:
-            # print("STATUS: Unknown (Keywords not found). The page structure might have changed.")
-            print("STATUS: POTENTIALLY IN STOCK!")
-            send_telegram_message(
-                f"🚨SANCHIT - HMT STOCK ALERT! 🚨\n"
-                f"HMT Stellar DASS 04 in STOCK !!\n"
-                f"Buy here: {URL}"
-            )
+            print("STATUS: Unknown (Keywords not found). The page structure might have changed.")
+            
 
     except Exception as e:
         print(f"An error occurred: {e}")
