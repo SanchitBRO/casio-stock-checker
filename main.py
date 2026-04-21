@@ -31,10 +31,9 @@ def check_stock():
         if response.status_code != 200:
             print(f"Failed to load page. Status: {response.status_code}")
             return
-
         soup = BeautifulSoup(response.content, 'html.parser')
         page_text = soup.get_text().lower()
-        
+        print(page_text)
         if "ADD TO CART" in page_text:
             print("STATUS: POTENTIALLY IN STOCK!")
             send_telegram_message(
