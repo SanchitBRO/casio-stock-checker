@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-URL = "https://justintime.in/collections/tiffany-casio/products/casio-enticer-men-quartz-turquoise-dial-analog-stainless-steel-watch-a2225?variant=49453593100563"
+URL = "https://justintime.in/products/casio-enticer-men-quartz-turquoise-dial-analog-stainless-steel-watch-a2225"
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 CHAT_ID = os.environ.get("CHAT_ID")
 
